@@ -43,7 +43,7 @@ class ScrapeSpider(scrapy.Spider):
                 'Stars': int(review.css('[data-hook="review-star-rating"] ::text').get()[0:1]),
                 'Reviewed_Country': review.css('[data-hook="review-date"] ::text').get()[12:17],
                 'Date': date(review.css('[data-hook="review-date"] ::text').get()[21:]),
-                'Verified': bool_check(review.css('[data-hook="avp-badge"] span ::text').get()),
+                'Verified': bool_check(review.css('[data-hook="avp-badge"] ::text').get()),
                 'HelpfulVotes': helpful(review.css('[data-hook="helpful-vote-statement"] ::text').get()),
                 'Title': review.css('[data-hook="review-title"] span ::text').get(),
                 'Review': review.xpath('normalize-space(.//*[@data-hook="review-body"])').get()
